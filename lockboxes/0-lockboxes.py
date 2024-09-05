@@ -11,7 +11,6 @@ def canUnlockAll(boxes):
     - The first box boxes[0] is unlocked
     - Return True if all boxes can be opened, else return False
     """
-
     canUnlockAll = False
     keys = {0: True}
     n_boxes = len(boxes)
