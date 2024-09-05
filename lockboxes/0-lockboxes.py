@@ -2,6 +2,7 @@
 
 """ Lockboxes """
 
+
 def canUnlockAll(boxes):
     """
     - boxes is a list of lists
