@@ -27,10 +27,3 @@ def canUnlockAll(boxes):
         canUnlockAll = True
 
     return canUnlockAll
-    for key in keys:
-        for box in boxes[key]:
-            if box not in keys and box < len(boxes):
-                keys.append(box)
-        if len(keys) == len(boxes):
-            canUnlockAll = True
-        return canUnlockAll
