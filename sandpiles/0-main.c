@@ -81,3 +81,4 @@ int main(void)
     print_grid(grid1);
 
     return (EXIT_SUCCESS);
+}
