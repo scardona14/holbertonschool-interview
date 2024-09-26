@@ -10,13 +10,12 @@ void _print_grid(int grid[3][3])
 {
     int i, j, limit = 3;
 
-    int limit = 3;
     for (i = 0; i < limit; i++)
     {
         for (j = 0; j < limit; j++)
         {
             if (j)
-            print(" ");
+                printf(" ");
             printf("%d", grid[i][j]);
         }
         printf("\n");
