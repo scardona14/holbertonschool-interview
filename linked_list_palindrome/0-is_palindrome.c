@@ -35,7 +35,7 @@ int is_palindrome(listint_t **head)
 {
     listint_t *slow = *head, *fast = *head, *first_half = *head, *second_half;
     
-    if (*head == NULL) || (*head)->next == NULL)
+        if (*head == NULL || (*head)->next == NULL)
         return (1);
 
 // Find the middle of the list
