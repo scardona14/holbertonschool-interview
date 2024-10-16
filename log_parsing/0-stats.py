@@ -12,9 +12,7 @@ import signal
 
 # Initialize global metrics
 total_size = 0
-status_codes = {
-    200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0
-}
+status_codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 line_count = 0
 
 
@@ -26,7 +24,7 @@ def print_stats():
     - The total file size so far.
     - The number of occurrences for each status code that has appeared.
     """
-    global total_size
+    global total_size  # Declare global to modify the global total_size
     print(f"File size: {total_size}")
     for code in sorted(status_codes.keys()):
         if status_codes[code] > 0:
