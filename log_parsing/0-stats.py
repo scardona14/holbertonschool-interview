@@ -26,6 +26,7 @@ def print_stats():
     - The total file size so far.
     - The number of occurrences for each status code that has appeared.
     """
+    global total_size
     print(f"File size: {total_size}")
     for code in sorted(status_codes.keys()):
         if status_codes[code] > 0:
@@ -51,7 +52,6 @@ try:
     for line in sys.stdin:
         line_count += 1
         try:
-            global total_size
             parts = line.split()
             if len(parts) < 7:
                 continue  # Skip malformed lines
@@ -61,6 +61,7 @@ try:
             status_code = int(parts[-2])
 
             # Update the total file size
+            global total_size  # Declare global before modifying
             total_size += file_size
 
             # Update status code count if it's a valid code
