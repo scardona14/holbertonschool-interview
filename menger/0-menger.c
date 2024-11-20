@@ -16,7 +16,6 @@ int one(int i, int j)
 	{
 		if (i % 3 == 1 && j % 3 == 1)
 			return (0);
-
 		i /= 3;
 		j /= 3;
 	}
