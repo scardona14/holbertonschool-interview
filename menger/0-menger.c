@@ -12,15 +12,15 @@
  */
 int one(int i, int j)
 {
-    while (i != 0 && j != 0)
-    {
-        if (i % 3 == 1 && j % 3 == 1)
-            return (0);
+	while (i != 0 && j != 0)
+	{
+		if (i % 3 == 1 && j % 3 == 1)
+			return (0);
 
-        i /= 3;
-        j /= 3;
-    }
-    return (1);
+		i /= 3;
+		j /= 3;
+	}
+	return (1);
 }
 
 /**
@@ -32,21 +32,21 @@ int one(int i, int j)
  */
 void menger(int level)
 {
-    int i, j, limit;
+	int i, j, limit;
 
-    if (level < 0)
-        return;
+	if (level < 0)
+		return;
 
-    limit = pow(3, level);
-    for (i = 0; i < limit; i++)
-    {
-        for (j = 0; j < limit; j++)
-        {
-            if (one(i, j) == 1)
-                printf("%c", '#');
-            else
-                printf("%c", ' ');
-        }
-        printf("\n");
-    }
+	limit = pow(3, level);
+	for (i = 0; i < limit; i++)
+	{
+		for (j = 0; j < limit; j++)
+		{
+			if (one(i, j) == 1)
+				printf("%c", '#');
+			else
+				printf("%c", ' ');
+		}
+		printf("\n");
+	}
 }
