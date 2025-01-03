@@ -11,15 +11,15 @@ const url = `https://swapi-api.hbtn.io/api/films/${movieId}/`;
 // Send a GET request to fetch movie data
 request(url, function (error, response, body) {
   if (error) {
-    console.log(error);
+    console.log('Error fetching movie data:', error);
     return;
   }
 
   // Parse the response body (JSON format)
   const movieData = JSON.parse(body);
 
-  // Check if the movie exists
-  if (!movieData || !movieData.characters) {
+  // Check if the movie exists and if it contains a list of characters
+  if (!movieData || !movieData.characters || movieData.characters.length === 0) {
     console.log('No characters found');
     return;
   }
@@ -28,7 +28,7 @@ request(url, function (error, response, body) {
   movieData.characters.forEach((characterUrl) => {
     request(characterUrl, function (error, response, body) {
       if (error) {
-        console.log(error);
+        console.log('Error fetching character data:', error);
         return;
       }
 
