@@ -1,40 +1,36 @@
 #!/usr/bin/node
+const argv = process.argv;
+const urlFilm = 'https://swapi-api.hbtn.io/api/films/';
+const urlMovie = `${urlFilm}${argv[2]}/`;
 
 const request = require('request');
 
-// Get the Movie ID from command line argument
-const movieId = process.argv[2];
+request(urlMovie, function (error, response, body) {
+  if (error == null) {
+    const fbody = JSON.parse(body);
+    const characters = fbody.characters;
 
-// Define the API URL
-const url = `https://swapi-api.hbtn.io/api/films/${movieId}/`;
-
-// Send a GET request to fetch movie data
-request(url, function (error, response, body) {
-  if (error) {
-    console.log('Error fetching movie data:', error);
-    return;
+    if (characters && characters.length > 0) {
+      const limit = characters.length;
+      CharRequest(0, characters[0], characters, limit);
+    }
+  } else {
+    console.log(error);
   }
-
-  // Parse the response body (JSON format)
-  const movieData = JSON.parse(body);
-
-  // Check if the movie exists and if it contains a list of characters
-  if (!movieData || !movieData.characters || movieData.characters.length === 0) {
-    console.log('No characters found');
-    return;
-  }
-
-  // Loop through the characters and print each one
-  movieData.characters.forEach((characterUrl) => {
-    request(characterUrl, function (error, response, body) {
-      if (error) {
-        console.log('Error fetching character data:', error);
-        return;
-      }
-
-      // Parse the character data and print the character name
-      const characterData = JSON.parse(body);
-      console.log(characterData.name);
-    });
-  });
 });
+
+function CharRequest (idx, url, characters, limit) {
+  if (idx === limit) {
+    return;
+  }
+  request(url, function (error, response, body) {
+    if (!error) {
+      const rbody = JSON.parse(body);
+      console.log(rbody.name);
+      idx++;
+      CharRequest(idx, characters[idx], characters, limit);
+    } else {
+      console.error('error:', error);
+    }
+  });
+}
